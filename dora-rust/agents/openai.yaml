@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dora Rust"
+  short_description: "Doraノード・スキーマ・周期・ロギングの指針"
+  default_prompt: "$dora-rustを使って、RustのDoraノードまたはデータフロー境界を実装・レビューしてください。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "MuJoCo Cassie"
+  short_description: "CassieのMJCF・関節・センサ・PD制御の指針"
+  default_prompt: "$mujoco-cassieを使って、MuJoCo Cassieの制御またはモデル依存処理を実装・レビューしてください。"

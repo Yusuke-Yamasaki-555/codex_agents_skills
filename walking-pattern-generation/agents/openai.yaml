@@ -1,0 +1,4 @@
+interface:
+  display_name: "歩行パターン生成"
+  short_description: "LIPM・ZMP・CoM軌道と移植の実装指針"
+  default_prompt: "$walking-pattern-generationを使って、歩行パターン生成の計算または移植を実装・レビューしてください。"

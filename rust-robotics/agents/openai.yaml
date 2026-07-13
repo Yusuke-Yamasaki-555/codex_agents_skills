@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rustロボティクス"
+  short_description: "Rust計算コア・値型・Cargo workspaceの指針"
+  default_prompt: "$rust-roboticsを使って、Rustロボティクスの計算コアまたはworkspaceを実装・レビューしてください。"

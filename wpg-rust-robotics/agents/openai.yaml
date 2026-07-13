@@ -1,4 +1,0 @@
-interface:
-  display_name: "WPG Rustロボティクス"
-  short_description: "Rust・MuJoCo・Dora歩行制御の実装指針"
-  default_prompt: "$wpg-rust-roboticsを使って、このRustロボティクスタスクを実装またはレビューしてください。"
