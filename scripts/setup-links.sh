@@ -18,6 +18,7 @@ skill_names=(
     dora-rust
     mujoco-cassie
 )
+grilling_source="${skills_root}/vendor/mattpocock-skills/skills/productivity/grilling"
 legacy_skill_name="wpg-rust-robotics"
 
 create_link() {
@@ -71,3 +72,7 @@ for skill_name in "${skill_names[@]}"; do
         "${skills_root}/${skill_name}" \
         "${codex_home}/skills/${skill_name}"
 done
+
+create_link \
+    "${grilling_source}" \
+    "${codex_home}/skills/grilling"

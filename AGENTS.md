@@ -9,6 +9,7 @@
 - Rust API、Cargo workspace、数値計算コア: `$rust-robotics`
 - Doraノード、ポート、スキーマ、周期、通信境界: `$dora-rust`
 - MuJoCo Cassie、MJCF、関節・センサ、PD制御: `$mujoco-cassie`
+- 計画、設計、意思決定の前提や分岐を実装前に詰める: `$grilling`
 
 ## 基本姿勢
 
