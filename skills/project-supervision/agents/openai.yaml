@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Supervision"
+  short_description: "Supervise project progress, risks, and PR stacks"
+  default_prompt: "Use $project-supervision to assess this project and report its current state, risks, and next decisions."
