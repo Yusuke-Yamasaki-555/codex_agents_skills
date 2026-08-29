@@ -76,3 +76,5 @@ done
 create_link \
     "${grilling_source}" \
     "${codex_home}/skills/grilling"
+
+"${skills_root}/scripts/setup-git-hooks.sh"

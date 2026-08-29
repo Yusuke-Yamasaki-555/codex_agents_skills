@@ -1,0 +1,6 @@
+#:schema https://developers.openai.com/codex/config-schema.json
+
+# プロジェクト共通の非機密設定だけを管理する。
+# 認証情報や個人設定は ~/.codex/config.toml に置く。
+[shell_environment_policy]
+set = { CODEX_GIT_ATTRIBUTION = "1" }

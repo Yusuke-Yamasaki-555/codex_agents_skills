@@ -1,0 +1,27 @@
+#!/bin/sh
+
+set -eu
+
+message_file=$1
+commit_source=${2-}
+
+# 通常のターミナルから作成するコミットには影響させない。
+if [ "${CODEX_GIT_ATTRIBUTION:-}" != "1" ]; then
+    exit 0
+fi
+
+# Gitが自動生成する統合用メッセージには共同編集者を追加しない。
+case "$commit_source" in
+    merge|squash)
+        exit 0
+        ;;
+esac
+
+git interpret-trailers \
+    --in-place \
+    --no-divider \
+    --where end \
+    --if-exists addIfDifferent \
+    --if-missing add \
+    --trailer "Co-authored-by: Codex <codex@openai.com>" \
+    "$message_file"
