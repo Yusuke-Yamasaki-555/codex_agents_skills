@@ -24,6 +24,7 @@ legacy_skill_name="wpg-rust-robotics"
 create_link() {
     local source_path="$1"
     local link_path="$2"
+    local previous_source_path="${3:-}"
 
     if [[ ! -e "${source_path}" ]]; then
         echo "リンク元が存在しません: ${source_path}" >&2
@@ -32,9 +33,18 @@ create_link() {
 
     if [[ -L "${link_path}" ]]; then
         local current_target
-        current_target="$(readlink -f -- "${link_path}")"
-        if [[ "${current_target}" == "$(readlink -f -- "${source_path}")" ]]; then
+        current_target="$(readlink -- "${link_path}")"
+        if [[ "${current_target}" != /* ]]; then
+            current_target="$(dirname -- "${link_path}")/${current_target}"
+        fi
+        current_target="$(readlink -m -- "${current_target}")"
+        if [[ "${current_target}" == "$(readlink -m -- "${source_path}")" ]]; then
             echo "設定済みです: ${link_path} -> ${source_path}"
+            return 0
+        fi
+        if [[ -n "${previous_source_path}" && "${current_target}" == "$(readlink -m -- "${previous_source_path}")" ]]; then
+            ln -sfn -- "${source_path}" "${link_path}"
+            echo "更新しました: ${link_path} -> ${source_path}"
             return 0
         fi
         echo "異なるシンボリックリンクが存在します: ${link_path} -> $(readlink -- "${link_path}")" >&2
@@ -69,8 +79,9 @@ fi
 
 for skill_name in "${skill_names[@]}"; do
     create_link \
-        "${skills_root}/${skill_name}" \
-        "${codex_home}/skills/${skill_name}"
+        "${skills_root}/skills/${skill_name}" \
+        "${codex_home}/skills/${skill_name}" \
+        "${skills_root}/${skill_name}"
 done
 
 create_link \
